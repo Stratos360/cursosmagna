@@ -468,13 +468,13 @@ const routes: Routes = [
       },
       {
         path: 'seven',
-        component: C13pp09Component,    //cada paso foto new
+        component: C13pp09Component,//REMOVEEEE    //cada paso foto new
         data: { animationState: '7' }
       },
 
       {
         path: 'eight',
-        component: C13pp10Component,    //control foto
+        component: C13pp10Component,  //REMOVEEEE  //control foto
         data: { animationState: '8' }
       },
       {
