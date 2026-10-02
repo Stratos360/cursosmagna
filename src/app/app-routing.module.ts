@@ -480,19 +480,19 @@ const routes: Routes = [
       {
         path: 'seven',
         component: C13pp07Component,  //va despues control foto
-        data: { animationState: '9' }
+        data: { animationState: '7' }
       },
 
       {
         path: 'eight',
         component: C13pp1Component,   //va antes de piramide
-        data: { animationState: '10' }
+        data: { animationState: '8' }
       },
 
       {
         path: 'nine',
         component: C13pp11Component,    //piramide
-        data: { animationState: '1' }
+        data: { animationState: '9' }
       },
       {
         path: 'ten',
@@ -503,13 +503,13 @@ const routes: Routes = [
       {
         path: 'eleven',
         component: C13pp12Component,
-        data: { animationState: '2' }
+        data: { animationState: '1' }
       },
 
       {
         path: 'twelve',
         component: C13pp13Component,
-        data: { animationState: '3' }
+        data: { animationState: '2' }
       },
 
 
@@ -517,40 +517,40 @@ const routes: Routes = [
       {
         path: 'thirteen',
         component: C13f1Component,
-        data: { animationState: '4' }
+        data: { animationState: '3' }
       },
       {
         path: 'fourteen',
         component: C13f2Component,
-        data: { animationState: '5' }
+        data: { animationState: '4' }
       },
       {
         path: 'fifteen',
         component: C13f3Component,
-        data: { animationState: '6' }
+        data: { animationState: '5' }
       },
       {
         path: 'sixteen',
         component: C13f5Component,
-        data: { animationState: '8' }
+        data: { animationState: '6' }
       },
 
       {
         path: 'seventeen',
         component: C13pp06Component,
-        data: { animationState: '9' }
+        data: { animationState: '7' }
       },
 
 
       {
         path: 'eighteen',
         component: C13p3Component,  //pdf
-        data: { animationState: '1' }
+        data: { animationState: '8' }
       },
       {
         path: 'nineteen',
         component: C13p4Component,  //outro
-        data: { animationState: '2' }
+        data: { animationState: '9' }
       },
 
       //{path: '**', redirectTo:''}
