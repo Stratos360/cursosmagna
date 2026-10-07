@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   //databaseURL: 'http://localhost:8000/api/',
-  databaseURL: 'https://website-a573c3cf.dancingapps.org/public/api/',
-
+  //databaseURL: 'https://website-a573c3cf.dancingapps.org/public/api/',
+  databaseURL: 'https://mangabackend.uniprotec.net/api/'
   //faulty php8.2 register api
   // databaseURL: 'https://educacion.stratos360.com.mx/index.php/api/', //FAILS BECAUSE OF PHP 8.2
 
