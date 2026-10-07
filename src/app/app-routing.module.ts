@@ -479,19 +479,19 @@ const routes: Routes = [
         },*/
       {
         path: 'seven',
-        component: C13pp07Component,  //va despues control foto
+        component: C13pp1Component,  //va despues control foto
         data: { animationState: '7' }
       },
 
       {
         path: 'eight',
-        component: C13pp1Component,   //va antes de piramide
+        component: C13pp11Component,   //va antes de piramide
         data: { animationState: '8' }
       },
 
       {
         path: 'nine',
-        component: C13pp11Component,    //piramide
+        component: C13pp07Component,    //piramide
         data: { animationState: '9' }
       },
       {
