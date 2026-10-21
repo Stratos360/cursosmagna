@@ -4,64 +4,23 @@
     <div class="form-group row">
         <div class="col-sm text-center">
           <h4  class="d-block" style="background-color: #f09697; color:#fff; margin: 15px;"> Aprendizaje de usuarios</h4>
-         
+
         </div>
       </div>
-    
+
       <div class="chart-container">
 
-<div class="chart-wrapper">
-  <p>Cuestionario 1</p>
-    <canvas #chart1  baseChart
-    [data]="barChartDatareal"
-    [options]="barChartOptions"
-    [plugins]="barChartPlugins"
-    [legend]="barChartLegend"
-    
-    ><!--[type]="'line'"-->
-</canvas>
-</div>
+        <div class="chart-wrapper" *ngFor="let chart of quizCharts">
+          <p>{{chart.title}}</p>
+          <canvas baseChart width="480" height="300"
+          [data]="chart.data"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          >
+          </canvas>
+        </div>
 
-
-<div class="chart-wrapper">
-  <p>Cuestionario 2</p>
-  <canvas  #chart2  baseChart
-  [data]="barChartDatareal2"
-  [options]="barChartOptions"
-  [plugins]="barChartPlugins"
-  [legend]="barChartLegend"
-  
-  >
-</canvas>
-</div>
-
-<div class="chart-wrapper">
-  <p>Cuestionario 3</p>
-  <canvas #chart3  baseChart
-  [data]="barChartData2"
-  [options]="barChartOptions"
-  [plugins]="barChartPlugins"
-  [legend]="barChartLegend"
-  
-  >
-</canvas>
-
-</div>
-
-<div class="chart-wrapper">
-  <p>Cuestionario 4</p>
-  <canvas #chart4 baseChart
-  [data]="barChartData"
-  [options]="barChartOptions"
-  [plugins]="barChartPlugins"
-  [legend]="barChartLegend"
-  
-  >
-</canvas>
-
-
-</div>
-</div>
-
+      </div>
 
 </div>
