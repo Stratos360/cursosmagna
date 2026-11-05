@@ -390,7 +390,11 @@ export class VerestudianteComponent implements OnInit {
         pdf.setFontSize(18);
         pdf.setFont('Helvetica', 'bold');
         pdf.setTextColor(226, 46, 47);
-        pdf.text(component.datestring, pdfPageWidth / 1.6, pdfPageHeight / 1.33, { align: 'center' }); // Add the text
+        // Left-align the date just after "Celaya, Guanajuato a" regardless of month length
+        // (centering made long months like "Noviembre" overlap the "a").
+        // In the template image (1650px = 297mm) the "a" ends at ~870px => ~156.6mm; add a small gap.
+        const dateX = 160;
+        pdf.text(component.datestring, dateX, pdfPageHeight / 1.33, { align: 'left' }); // Add the text
 
         pdf.save("diplomacursoseguridadMagna.pdf");
       };

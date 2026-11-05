@@ -26,7 +26,7 @@ export class DiplomaComponent implements OnInit {
 
   constructor(private httpclient: HttpClient) { }
 
-  
+
   getCali() {
 
     /*
@@ -45,32 +45,32 @@ export class DiplomaComponent implements OnInit {
     });*/
 
 
-    
-of(Constants.URL + "quiz1/"+ Constants.userId, Constants.URL + "quiz2/"+ Constants.userId,Constants.URL + "quiz3/"+ Constants.userId,Constants.URL + "quiz4/"+ Constants.userId,Constants.URL + "quiz5/"+ Constants.userId,Constants.URL + "quiz6/"+ Constants.userId).pipe(
-  concatMap(url => this.httpclient.get(url)),
-  // Assuming each response has a 'data' object with a 'score' property
-).subscribe({
-  next: (res:any) => {
-    console.log(res);
-    const scoredata = res['data'];
-    console.log(scoredata);
-    this.sumascores += scoredata['score'];
-  },
-  error: error => {
-    window.alert("Error al recuperar datos, intente de nuevo.");
-    console.log(error);
-  },
-  complete: () => {
-    console.log("Total Score: ", this.sumascores);
-    this.sumascores = (this.sumascores / 32) * 10;
-    this.sumascores = parseFloat(this.sumascores.toFixed(1));
-    this.sumascoredone = true;
-    // You can handle the final sumascores here
-  }
-});
+
+    of(Constants.URL + "quiz1/" + Constants.userId, Constants.URL + "quiz2/" + Constants.userId, Constants.URL + "quiz3/" + Constants.userId, Constants.URL + "quiz4/" + Constants.userId, Constants.URL + "quiz5/" + Constants.userId, Constants.URL + "quiz6/" + Constants.userId).pipe(
+      concatMap(url => this.httpclient.get(url)),
+      // Assuming each response has a 'data' object with a 'score' property
+    ).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        const scoredata = res['data'];
+        console.log(scoredata);
+        this.sumascores += scoredata['score'];
+      },
+      error: error => {
+        window.alert("Error al recuperar datos, intente de nuevo.");
+        console.log(error);
+      },
+      complete: () => {
+        console.log("Total Score: ", this.sumascores);
+        this.sumascores = (this.sumascores / 32) * 10;
+        this.sumascores = parseFloat(this.sumascores.toFixed(1));
+        this.sumascoredone = true;
+        // You can handle the final sumascores here
+      }
+    });
 
 
-  
+
 
   }
 
@@ -170,7 +170,7 @@ of(Constants.URL + "quiz1/"+ Constants.userId, Constants.URL + "quiz2/"+ Constan
   }
 
 
-  printtest2() {
+  printtest2() {//this is the one that works
 
     const component = this; //to avoid confusing this. on htmlelemnt
 
@@ -230,7 +230,11 @@ of(Constants.URL + "quiz1/"+ Constants.userId, Constants.URL + "quiz2/"+ Constan
         pdf.setFontSize(18);
         pdf.setFont('Helvetica', 'bold');
         pdf.setTextColor(226, 46, 47);
-        pdf.text(component.datestring, pdfPageWidth / 1.6, pdfPageHeight / 1.33, { align: 'center' }); // Add the text
+        // Left-align the date just after "Celaya, Guanajuato a" regardless of month length
+        // (centering made long months like "Noviembre" overlap the "a").
+        // In the template image (1650px = 297mm) the "a" ends at ~870px => ~156.6mm; add a small gap.
+        const dateX = 160;
+        pdf.text(component.datestring, dateX, pdfPageHeight / 1.33, { align: 'left' }); // Add the text
 
         pdf.save("diplomacursoseguridadMagna.pdf");
       };
