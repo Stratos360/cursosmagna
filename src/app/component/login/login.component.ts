@@ -61,6 +61,8 @@ export class LoginComponent implements OnInit {
       if (this.successdata['status'] == "success") {
         window.alert("Bienvenido " + this.successdata['data']['name'] + " a la plataforma MAGNA");
 
+        //TODO delete user: once the backend with Sanctum login is deployed, read the new token here:
+        //let token = this.successdata['data']['token'] ?? this.successdata['data']['access_token'];  //Sanctum sends "token"
         let token = this.successdata['data']['access_token'];  //was res but cant be used like this anymopre
         localStorage.setItem("access_token", token);//already set on authintercept//'Bearer ' +token);
 

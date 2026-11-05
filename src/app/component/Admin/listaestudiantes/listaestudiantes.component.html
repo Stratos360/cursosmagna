@@ -11,7 +11,15 @@
     <br>
 
     <input type="text" [(ngModel)]="searchterm" placeholder="Buscar cadena">
-  
+
+    <label class="ms-3">Mostrar:
+      <select [ngModel]="view" (ngModelChange)="view = $event; page = 1; applyView()">
+        <option value="finished">Terminados en {{ cycleYear }}</option>
+        <option value="all">Todos los alumnos</option>
+      </select>
+    </label>
+    <strong class="ms-3" *ngIf="view == 'finished'">{{ rows.length }} cursos terminados en {{ cycleYear }}</strong>
+
     <pagination-controls (pageChange)="page = $event"></pagination-controls>
   
   <table class="table" *ngIf="data">
@@ -20,18 +28,23 @@
         <th scope="col">ID</th>
         <th scope="col">Nombre</th>       
         <th scope="col">Email</th>   
-        <th scope="col">Fecha de registro</th>   
+        <th scope="col">Fecha de registro</th>
+        <th scope="col">Curso terminado</th>
         <th scope="col">Acciones</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let ems of data  | filterpipe: searchterm | paginate: { itemsPerPage: 50, currentPage: page }">
+      <tr *ngFor="let ems of rows  | filterpipe: searchterm | paginate: { itemsPerPage: 50, currentPage: page }">
         <th scope="row">{{ ems.id }}</th>
         <td>{{ ems.name }}</td>
         <td>{{ ems.email }}</td>   
-        <td>{{ ems.created_at.substring(0, 16).replace('T', ' ')}}</td>     
-        <td> 
-            <button type="button" class="btn  btn-outline-primary" title="Ver Resultados" (click)="verquiz(ems)">Ver Resultados</button>  
+        <td>{{ ems.created_at.substring(0, 16).replace('T', ' ')}}</td>
+        <td>{{ ems.finished_at || '—' }}</td>
+        <td>
+            <button type="button" class="btn  btn-outline-primary" title="Ver Resultados" (click)="verquiz(ems)">Ver Resultados</button>
+            <!-- TODO delete user: uncomment once the backend is deployed, together with the token line in login.component.ts
+            <button type="button" class="btn btn-danger ms-2" title="Eliminar usuario" [disabled]="ems.id == Constants.userId" (click)="eliminar(ems)">Eliminar</button>
+            -->
         </td>
       </tr>
     </tbody>
